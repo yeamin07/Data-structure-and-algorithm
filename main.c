@@ -1,4 +1,5 @@
-/* #include <stdio.h>
+///Node information.
+#include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 
@@ -56,36 +57,10 @@ void main()
     printlist(start);
 
     getch();
-} */
-
-
-/*#include<stdio.h>
-main()
-{
-    int i,n,arr[1000];
-    for(i=0;i<101;i++)
-    {
-        arr[i]=0;
-    }
-    for(i=0;i<101;i+=2)
-    {
-        arr[i]=1;
-    }
-    printf("Enter a number :\n");
-    scanf("%d",&n);
-    if(arr[n]==1)
-    {
-        printf("%d is even number.\n",n);
-    }
-    else
-    {
-        printf("%d is odd number.",n);
-    }
-}*/
-
+}
 
 /// Linear Search in C
-/*#include<stdio.h>
+#include<stdio.h>
 int main()
 {
     int arr[20],i,n,element;
@@ -108,11 +83,11 @@ int main()
     }
     if(i==n)
     printf("%d isn't present at the array\n",element);
-}*/
+}
 
 
 /// Binary Search in C
- /*#include <stdio.h>
+ #include <stdio.h>
 int binarySearch(int array[], int x, int low, int high)
 {
   // Repeat until the pointers low and high meet each other
@@ -144,11 +119,11 @@ int main(void) {
   else
     printf("Element is found at index %d", result);
   return 0;
-} */
+}
 
 
 /// Selection sort in C
-/* #include <stdio.h>
+ #include <stdio.h>
 // function to swap the the position of two elements
 void swap(int *a, int *b) {
   int temp = *a;
@@ -185,11 +160,11 @@ int main() {
   selectionSort(data, size);
   printf("Sorted array in Acsending Order:\n");
   printArray(data, size);
-} */
+}
 
 
 ///Bubble sort in C
-/* #include <stdio.h>
+#include <stdio.h>
 // perform the bubble sort
 void bubbleSort(int array[], int size)
  {
@@ -230,11 +205,11 @@ int main() {
   bubbleSort(data, size);
   printf("Sorted Array in Ascending Order:\n");
   printArray(data, size);
-} */
+}
 
 /// Insertion sort in C
 
-/* #include <stdio.h>
+ #include <stdio.h>
 // Driver code
 int main()
 {
@@ -270,34 +245,325 @@ void printArray(int array[], int size)
   {
     printf("%d ", array[i]);
   }
-} */
-
-
-
-#include <stdio.h>
-
-int main()
-{
-    char a[15];
-    char b[15];
-    char c[15];
-    scanf("%s", a);
-    scanf("%s", b);
-    scanf("%s", c);
-
-    if (a[0] == 'v' && b[0] == 'a' && c[0] == 'c')printf("aguia\n");
-    if (a[0] == 'v' && b[0] == 'a' && c[0] == 'o')printf("pomba\n");
-    if (a[0] == 'v' && b[0] == 'm' && c[0] == 'o')printf("homem\n");
-    if (a[0] == 'v' && b[0] == 'm' && c[0] == 'h')printf("vaca\n");
-    if (a[0] == 'i' && b[0] == 'i' && c[2] == 'm')printf("pulga\n");
-    if (a[0] == 'i' && b[0] == 'i' && c[2] == 'r')printf("lagarta\n");
-    if (a[0] == 'i' && b[0] == 'a' && c[0] == 'h')printf("sanguessuga\n");
-    if (a[0] == 'i' && b[0] == 'a' && c[0] == 'o')printf("minhoca\n");
-
-    return 0;
 }
 
 
+
+/// Perform some stack operation (push, pop, print) using array
+
+ #include<stdio.h>
+ int stack[100],choice,n,top,x,i;
+ int main()
+ {
+     top = -1;
+     printf("Enter the STACK size (maximum 100):");
+     scanf("%d",&n);
+     printf("\nEnter what operation you want to perform :");
+     printf("\n\t1.PUSH\n\t2.POP\n\t3.DISPLAY\n\t4.EXIT\n");
+     do{
+        printf("\nEnter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+        case 1:
+            {
+                push();
+                break;
+            }
+            case 2:
+            {
+                pop();
+                break;
+            }
+            case 3:
+            {
+                display();
+                break;
+            }
+            case 4:
+            {
+                printf("\nEXIT POINT !");
+                break;
+            }
+            default:
+                {
+                    printf("\n\tPlease Enter the choice 1/2/3/4\n");
+                }
+        }
+     }
+     while(choice!=4);
+        return 0;
+ }
+
+ void push()
+ {
+     if(top>=n-1)
+     {
+         printf("\tSTACK is Full!");
+     }
+     else{
+        printf("Enter the value you want to push on the STACK: ");
+        scanf("%d",&x);
+
+        top++;
+        stack[top] = x;
+     }
+ }
+ void pop()
+ {
+    if(top<=-1)
+    {
+        printf("STACK is Empty!");
+    }
+    else{
+        printf("\nThe popped element is %d",stack[top]);
+        top--;
+    }
+ }
+ void display()
+ {
+    if(top>=0)
+    {
+        printf("\nThe elements in STACK are :");
+        for(i=top;i>=0;i--)
+        {
+            printf("\n\t%d",stack[i]);
+        }
+    }
+    else
+        printf("\nThe STACK is Empty!");
+ }
+
+/// Perform circular queue operation (enqueue, dequeue, display) using array
+ #include<stdio.h>
+int QUEUE[100],max;
+int front = -1;
+int rear = -1;
+void enqueue(int item)
+{
+    if((front == 0 && rear == max-1) || (front == rear+1))
+    {
+        printf("Queue is FULL! \n");
+        return;
+    }
+    if(front == -1)
+    {
+        front = 0;
+        rear = 0;
+    }
+    else
+    {
+        if(rear == max-1)
+            rear = 0;
+        else
+            rear = rear+1;
+    }
+    QUEUE[rear] = item ;
+}
+void dequeue()
+{
+    if(front == -1)
+    {
+        printf("Queue is EMPTY! \n");
+        return ;
+    }
+    printf("Dequeued element is : %d\n",QUEUE[front]);
+    if(front == rear)
+    {
+        front = -1;
+        rear=-1;
+    }
+    else
+    {
+        if(front == max-1)
+            front = 0;
+        else
+            front = front+1;
+    }
+}
+void display()
+{
+    int front_pos = front,rear_pos = rear;
+    if(front == -1)
+    {
+        printf("Queue is EMPTY!\n");
+        return;
+    }
+    printf("Queue elements :\n");
+    if( front_pos <= rear_pos )
+        while(front_pos <= rear_pos)
+        {
+            printf("%d ",QUEUE[front_pos]);
+            front_pos++;
+        }
+    else
+    {
+        while(front_pos <= max-1)
+        {
+            printf("%d ",QUEUE[front_pos]);
+            front_pos++;
+        }
+        front_pos = 0;
+        while(front_pos <= rear_pos)
+        {
+            printf("%d ",QUEUE[front_pos]);
+            front_pos++;
+        }
+    }
+    printf("\n");
+}
+int main()
+{
+    int choice,item;
+    jump: printf("\nEnter the Queue Size(maximum 100):");
+    scanf("%d",&max);
+    if(max>100)
+    {
+        printf("Array Index out of Bound!Please Re-enter!");
+        goto jump;
+    }
+    printf("Choose the operation you want to be performed : \n");
+    printf("\t1.Enqueue\n\t2.Dequeue\n\t3.Display\n\t4.Quit");
+    do
+    {
+        printf("\nEnter your choice : ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+        case 1 :
+            printf("Enqueue the element : ");
+            scanf("%d", &item);
+            enqueue(item);
+            break;
+        case 2 :
+            dequeue();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            {
+                printf("EXIT POINT!");
+                   break;
+            }
+        default:
+            printf("Choose a valid option between 1/2/3/4 \n");
+        }
+    }
+    while(choice!=4);
+    return 0;
+}
+
+/// Fibonacci Series using recursion.
+#include<stdio.h>
+void Fibonacci(int num)
+{
+    static int num1=0,num2=1,num3;
+    if(num>0)
+    {
+        num3 = num1 + num2;
+        num1 = num2;
+        num2 = num3;
+        printf("%d ",num3);
+        Fibonacci(num-1);
+    }
+}
+int main()
+{
+    int num;
+    printf("Enter the number of elements to show: ");
+    scanf("%d",&num);
+    printf("\nFibonacci Series: ");
+    printf("%d %d ",0,1);
+    Fibonacci(num-2);
+    printf("\n");
+    return 0;
+}
+
+/// Calculate power using recursion
+ #include <stdio.h>
+int main()
+{
+    double base, power;
+    int exponent;
+    jump: printf("\nEnter base: ");
+    scanf("%lf", &base);
+    printf("Enter exponent: ");
+    scanf("%d", &exponent);
+    power = pow(base, exponent);
+    printf("%.2lf ^ %d = %.2lf\n", base, exponent, power);
+    goto jump;
+}
+double pow(double base, double exponent)
+{
+    if(exponent == 0)
+        return 1;
+    else if(exponent > 0)
+        return base * pow(base, exponent - 1);
+    else
+        return 1 / pow(base, -exponent);
+}
+
+
+/// Calculate permutation using recursion
+#include <stdio.h>
+#include <string.h>
+int count=0;
+void swap(char *x, char *y)
+{
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void permutation(char s[], int l, int r)
+{
+    if (l == r)
+    {
+        puts(s);
+        count++;
+    }
+    else
+    {
+        for (int i = l; i <= r; i++)
+        {
+            swap(&s[l], &s[i]);
+            permutation(s, l+1, r);
+            swap(&s[l], &s[i]);
+        }
+    }
+}
+int main()
+{
+    char str[100];
+    printf("Enter Expression: ");
+    gets(str);
+    int n = strlen(str);
+    permutation(str, 0, n-1);
+    printf("\nTotal Permutation:%d\n",count);
+    return 0;
+}
+
+/// Calculate combination using recursion
+#include <stdio.h>
+int NCR (int n, int r)
+{
+    if (r == 0 || n == r)
+    {
+        return 1;
+    }
+    else
+        return NCR (n - 1, r - 1) + NCR (n - 1, r);
+}
+int main ()
+{
+    int n,r;
+    printf("Enter a number n: ");
+    scanf("%d",&n);
+    printf("Enter a number r: ");
+    scanf("%d",&r);
+    printf("\nValue of %dC%d = %d\n",n,r, NCR (n, r));
+}
 
 
 
